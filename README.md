@@ -1,132 +1,132 @@
-# DocuGenius
+# DocuGenius.usa
 
-> 本地文档转 Markdown 工具，让 AI 编程工具直接读懂你的业务文档。
+> Local document-to-Markdown converter that lets AI coding tools read your business documents directly.
 
 [![Version](https://img.shields.io/badge/version-2.5.8-blue)](https://github.com/brucevanfdm/DocuGenius/releases)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-DocuGenius 是一个 VSCode 插件，将 Word、Excel、PowerPoint、PDF 转换为结构化的 Markdown，让 Trae AI、CodeBuddy、Cursor 等 AI 编程工具能够原生理解你的产品文档、数据表格和技术资料。
+DocuGenius.usa is a ported VSCode extension that converts Word, Excel, PowerPoint and PDF files into structured Markdown, so AI coding tools such as Trae AI, CodeBuddy and Cursor can natively understand your product docs, data tables and technical material.
 
-## 快速开始
+## Quick Start
 
-### 安装
+### Installation
 
-**方式一：插件市场（推荐）**
+**Option 1: Extension Marketplace (recommended)**
 
-在 VSCode / Trae / CodeBuddy 插件市场搜索 `DocuGenius`，点击安装。
+Search for `DocuGenius` in the VSCode / Trae / CodeBuddy extension marketplace and click install.
 
-**方式二：手动安装**
+**Option 2: Manual install**
 
-1. 下载最新 `.vsix`：[GitHub Releases](https://github.com/brucevanfdm/DocuGenius/releases/latest)
-2. 在编辑器中选择「从 VSIX 安装」
+1. Download the latest `.vsix`: [GitHub Releases](https://github.com/brucevanfdm/DocuGenius/releases/latest)
+2. In your editor, choose "Install from VSIX"
 
-### 使用
+### Usage
 
-**转换单个文件**
+**Convert a single file**
 
-右键点击文档 → 选择 `[DocuGenius] Convert to Markdown` → 输出到 `DocuGenius/` 目录
+Right-click a document → select `[DocuGenius] Convert to Markdown` → output lands in the `DocuGenius/` directory.
 
-**批量转换**
+**Batch conversion**
 
-右键点击文件夹 → 选择 `[DocuGenius] Process All Files in Folder`
+Right-click a folder → select `[DocuGenius] Process All Files in Folder`.
 
-转换完成后，直接在 AI 问答窗口中引用这些 Markdown 文件即可。
+Once conversion is done, just reference the generated Markdown files directly in your AI chat window.
 
-## 支持格式
+## Supported Formats
 
-| 格式 | 扩展名 | 转换效果 |
-|------|--------|----------|
-| Word | `.docx` | 保留文本层级、提取图片到 `images/` |
-| Excel | `.xlsx` | 转为结构化 Markdown 表格 |
-| PowerPoint | `.pptx` | 逐页提取文本和图片 |
-| PDF | `.pdf` | 高质量文字提取 |
+| Format | Extension | Result |
+|--------|-----------|--------|
+| Word | `.docx` | Preserves text hierarchy, extracts images to `images/` |
+| Excel | `.xlsx` | Converts to structured Markdown tables |
+| PowerPoint | `.pptx` | Extracts text and images page by page |
+| PDF | `.pdf` | High-quality text extraction |
 
-## 特性
+## Features
 
-- **纯本地处理** — 文档不上传云端，敏感数据更安全
-- **无数量限制** — 不受云端知识库文件数量/大小限制
-- **AI 原生格式** — 输出结构化 Markdown，适配各类 AI 编程工具
-- **批量转换** — 支持整个文件夹一键处理
+- **Fully local processing** — documents never leave your machine, keeping sensitive data safer
+- **No quantity limits** — not bound by the file count/size caps of cloud knowledge bases
+- **AI-native format** — outputs structured Markdown that suits any AI coding tool
+- **Batch conversion** — process an entire folder in a single click
 
-## 典型场景
+## Typical Use Cases
 
-- **产品材料创作**：基于历史 PRD 快速生成新方案
-- **数据分析**：将 Excel 指标表交给 AI 生成分析结论
-- **竞品研究**：批量转换竞品 PDF 资料，生成结构化对比报告
-- **需求管理**：从产品文档中提取功能清单、核对参数细节
+- **Product material creation**: spin up new proposals quickly from historical PRDs (Product Requirements Documents)
+- **Data analysis**: hand Excel metrics tables to AI and let it generate conclusions
+- **Competitive research**: batch-convert competitor PDFs into structured comparison reports
+- **Requirements management**: extract feature lists and verify parameter details from product docs
 
-## 效果对比
+## Before & After
 
-转换前：
-
-```
-项目/
-├── 产品需求.docx     # AI 无法直接读取
-├── 用户数据.xlsx     # AI 难以理解结构
-└── 技术文档.pdf      # 需要手动复制粘贴
-```
-
-转换后：
+Before:
 
 ```
-项目/
-├── 原始文档/
-│   ├── 产品需求.docx
-│   ├── 用户数据.xlsx
-│   └── 技术文档.pdf
-└── DocuGenius/        # AI 可直接引用的知识库
-    ├── 产品需求.md
-    ├── 用户数据.md
-    ├── 技术文档.md
+project/
+├── product-requirements.docx   # AI can't read it directly
+├── user-data.xlsx              # structure is hard for AI to parse
+└── technical-doc.pdf           # needs manual copy-paste
+```
+
+After:
+
+```
+project/
+├── source-documents/
+│   ├── product-requirements.docx
+│   ├── user-data.xlsx
+│   └── technical-doc.pdf
+└── DocuGenius/                 # knowledge base AI can reference directly
+    ├── product-requirements.md
+    ├── user-data.md
+    ├── technical-doc.md
     └── images/
-        ├── 产品需求/
-        └── 技术文档/
+        ├── product-requirements/
+        └── technical-doc/
 ```
 
-## 系统要求
+## System Requirements
 
-- **macOS**：开箱即用（Intel / Apple Silicon）
-  - 正式发布包内置通用 macOS 二进制，同时支持 Intel 和 Apple Silicon
-  - 无需额外安装 Rosetta 2
-- **Windows**：需预先安装 Python 3.6+
-  - 首次转换时，DocuGenius 会先提示你安装一套**共享本地运行时**
-  - 这套运行时只会安装在扩展自己的存储目录中，并在所有工作区之间复用
-  - 不会向每个项目目录单独创建 `.venv`，也不会把依赖安装到当前工作区
+- **macOS**: works out of the box (Intel / Apple Silicon)
+  - Release builds bundle a universal macOS binary supporting both Intel and Apple Silicon
+  - No separate Rosetta 2 install required
+- **Windows**: requires Python 3.6+ installed beforehand
+  - On first conversion, DocuGenius prompts you to install a **shared local runtime**
+  - This runtime installs only in the extension's own storage directory and is reused across all workspaces
+  - It won't create a separate `.venv` in each project directory, nor install dependencies into the current workspace
 
-## Windows 运行时说明
+## Windows Runtime Notes
 
-在 Windows 上，DocuGenius 会使用系统里的 Python **只做一次引导**：
+On Windows, DocuGenius uses your system Python for a **one-time bootstrap** only:
 
-1. 检测本机是否存在可用的 Python
-2. 在扩展的全局存储目录里创建一套共享运行时
-3. 将 `python-docx`、`openpyxl`、`python-pptx`、`pdfplumber` 安装到这套共享运行时
-4. 后续所有工作区都复用这套运行时进行转换
+1. Detect whether a usable Python is present on the machine
+2. Create a shared runtime in the extension's global storage directory
+3. Install `python-docx`, `openpyxl`, `python-pptx` and `pdfplumber` into that shared runtime
+4. All subsequent workspaces reuse this runtime for conversion
 
-如果你需要手动处理运行时，可以从命令面板使用：
+If you need to manage the runtime manually, use these Command Palette commands:
 
 - `DocuGenius: Install Shared Runtime`
 - `DocuGenius: Repair Shared Runtime`
 - `DocuGenius: Show Runtime Status`
 
-## 常见问题
+## FAQ
 
-**Q: 与 Claude Project / ChatGPT Project 有什么区别？**
+**Q: How is this different from Claude Project / ChatGPT Project?**
 
-A: DocuGenius 是本地转换方案，无文件数量和大小限制，且完全支持 Excel 表格转换。转换后的 Markdown 可在任意 AI 编程工具中使用，成本更低，数据更安全。
+A: DocuGenius is a local conversion approach with no file count or size limits, and full support for Excel table conversion. The resulting Markdown works in any AI coding tool — lower cost, safer data.
 
-**Q: 文档数据是否安全？**
+**Q: Is my document data safe?**
 
-A: 文档转换过程完全在本地执行，不会上传到任何服务器。使用 AI 问答时调用云端大模型属于正常的 AI 工具使用流程。
+A: Conversion runs entirely locally and nothing is uploaded to any server. Calling a cloud LLM when you later use AI chat is simply the normal AI-tool workflow.
 
-**Q: 是否支持预览 Office 和 PDF 文件？**
+**Q: Does it support previewing Office and PDF files?**
 
-A: 不支持。DocuGenius 专注文档转换，如需在 IDE 中预览原始文件，建议搭配 Office Viewer 类插件使用。
+A: No. DocuGenius focuses on conversion. To preview original files inside your IDE, pair it with an Office Viewer-style extension.
 
-**Q: Windows 会不会给每个项目都安装一份依赖？**
+**Q: Will Windows install a copy of the dependencies for every project?**
 
-A: 不会。DocuGenius 现在会把 Windows 运行时安装到扩展自己的共享目录中，所有工作区共用一份，不会污染每个项目目录。
+A: No. DocuGenius now installs the Windows runtime into the extension's own shared directory; all workspaces share a single copy, so your project directories stay clean.
 
-## 作者
+## Author
 
 - X: [@bruc3van](https://x.com/bruc3van)
 - GitHub: [@bruc3van](https://github.com/bruc3van)
